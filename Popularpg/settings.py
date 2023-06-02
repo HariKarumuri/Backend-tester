@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'Popularpg.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'PopularPg',
+        'USER': 'mysuperuser',
+        'PASSWORD': 'mysuperuser',
+        'HOST': 'popularpg.cq3hjzatz3j2.eu-north-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
