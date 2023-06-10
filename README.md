@@ -44,9 +44,6 @@ To access an Amazon EC2 instance using SSH and a `.pem` key file, follow these s
 
    Adjust the directory path based on the specific location of your project.
 
-By following these steps, you will be able to log into the Amazon EC2 instance using SSH with the `.pem` key file and navigate to the desired directory where your project is located.
+## now to start django server for editing and restarting 
 
-[Optional: Insert any additional relevant information or instructions here]
 
-Feel free to customize the formatting, colors, and styles of this content to match your desired style in the `readme.md` file.
-   
