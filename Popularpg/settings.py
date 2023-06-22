@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'whitenoise.runserver_nostatic',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Popularpg.urls'
@@ -90,7 +92,14 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+""" cors origin  """
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',  
+    'https://popularpg.com',
+    # Replace with your React frontend URL
+    # Add other allowed origins if needed
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
