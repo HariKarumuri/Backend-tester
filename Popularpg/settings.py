@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-x9o=r1@9)^a&@acs0=o_sd5^$!x1=@%kqj^5t5!-!mj!mo50%y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['13.53.149.253']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,11 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pgs',
+    'import_export',
+    'ads_manager',
+    'bookings',
     'multiselectfield',
     'rest_framework',
     'drf_yasg',
     'whitenoise.runserver_nostatic',
     'corsheaders',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -80,17 +84,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Popularpg.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'PopularPg',
-        'USER': 'mysuperuser',
-        'PASSWORD': 'mysuperuser',
-        'HOST': 'popularpg.cq3hjzatz3j2.eu-north-1.rds.amazonaws.com',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres2",
+        "USER": "postgres",
+        "PASSWORD": "H@ri1086",
+        "HOST": "localhost",
+        "PORT": "5432"
     }
 }
 """ cors origin  """
@@ -126,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -156,13 +161,4 @@ EMAIL_HOST_PASSWORD = 'nhvmahxsoxakoeis'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-AWS_ACCESS_KEY_ID = 'AKIAVU2TDJIPHIJVZY4S'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'popularpg'
-AWS_S3_SIGNATURE_NAME = 's3v4',
-AWS_S3_REGION_NAME = 'ap-south-1'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL =  None
-AWS_S3_VERITY = True
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 

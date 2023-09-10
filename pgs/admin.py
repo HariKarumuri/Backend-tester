@@ -1,24 +1,65 @@
 from django.contrib import admin
+from import_export.admin import ImportExportMixin
+from .models import  Product, CommonArea, Services, TopAmenities, SecurityAmenity, Furnishing, AdditionalImage, AmenityImage, FoodImage
+from import_export import resources
 
-from .models import Category, Product, order , CommonArea , Services , TopAmenities , SecurityAmenity , Furnishing
+class AdditionalImageInline(admin.TabularInline):
+    model = AdditionalImage
 
-# Register your models here.
+class AmenityImageInline(admin.TabularInline):
+    model = AmenityImage
 
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['category_name','description', 'created_at', 'updated_at']
+class FoodImageInline(admin.TabularInline):
+    model = FoodImage
+
+class ProductResource(resources.ModelResource):
+    class Meta:
+        model = Product
+        fields = (
+            'id',
+            'product_name', 'description', 'phone_number', 'min_price', 'total_beds', 'single_sharing' , 'single_sharing_price' , 'single_sharing_deposite', 
+            'double_sharing',
+            'double_sharing_deposite',
+            'double_sharing_price',
+            'triple_sharing',
+            'triple_sharing_price',
+            'triple_sharing_deposite',
+            'maintaince_charge',
+            'electric_charge',
+            'pg_for',
+            'best_suited_for',
+            'meals_available',
+            'notice_period',
+            'lock_in_period',
+            'common_areas',
+            'property_managed_by',
+            'property_manager_stays',
+            'security_amenities',
+            'furnishing_in_property',
+            'services_in_property',
+            'topAmenities_in_property',
+            'city',
+            'locality',
+            'embedded_map_src_link',
+            'cover_image'
 
 
+
+           
+        )
+
+
+
+class ProductInline(admin.TabularInline):
+    model = Product
+    resource_class = ProductResource
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ['product_name','description', 'min_price', 'image', 'category', 'created_at', 'updated_at']
-
-
-
-@admin.register(order)
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ['customer_name','customer_email', 'product',  'quantity','created_at', 'updated_at']
+class ProductAdmin(ImportExportMixin, admin.ModelAdmin):
+    list_display = ['product_name', 'min_price', 'single_sharing', 'double_sharing', 'triple_sharing', 'locality', 'updated_at', 'phone_number']
+    list_filter = ['single_sharing', 'double_sharing', 'triple_sharing', 'locality']
+    inlines = [AdditionalImageInline, AmenityImageInline, FoodImageInline]
+    resource_class = ProductResource
 
 @admin.register(CommonArea)
 class CommonAreaAdmin(admin.ModelAdmin):
@@ -34,10 +75,8 @@ class FurnishingAdmin(admin.ModelAdmin):
 
 @admin.register(TopAmenities)
 class TopAmenitiesAdmin(admin.ModelAdmin):
-    list_display = ['name']    
+    list_display = ['name']
 
 @admin.register(Services)
 class ServicesAdmin(admin.ModelAdmin):
-    list_display = ['name']    
-
-
+    list_display = ['name']
